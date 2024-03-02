@@ -1,0 +1,16 @@
+html,
+body {
+    padding: 20px;
+    height: 100%;
+}
+
+* {
+    font-family: 'Cartograph CF';
+
+}
+
+.app-container {
+    width: 1200px;
+    margin-top: 20px;
+    margin: 0px auto;
+}
