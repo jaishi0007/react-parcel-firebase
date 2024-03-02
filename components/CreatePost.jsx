@@ -1,10 +1,29 @@
 import { PageHeader } from "@ant-design/pro-layout";
-import React from "react";
+import React, { useState } from "react";
 import { Input, Button } from "antd";
+import onFormFieldChange from "../extra/onTextFieldChange";
 const { TextArea } = Input
 
 
 const CreatePost = () => {
+
+
+    const [country, setCountry] = useState('');
+    const [fact, setFact] = useState('');
+
+    const onCountryNameChange = (e) => {
+        setCountry(e.target.value);
+    }
+    const onFactChange = (e) => {
+        setFact(e.target.value);
+    }
+
+    const createPost = () => {
+        console.log('Create Post');
+    }
+
+
+
     return (
         <div className="create-post-container">
             <div className="page-header-container">
@@ -20,7 +39,7 @@ const CreatePost = () => {
                         <h2>Country Name</h2>
                     </div>
                     <div className="post-input">
-                        <Input placeholder="Country Name" />
+                        <Input placeholder="Country Name" value={country} onChange={onCountryNameChange} />
                     </div>
                 </div>
 
@@ -29,12 +48,12 @@ const CreatePost = () => {
                         <h2>Facts</h2>
                     </div>
                     <div className="post-input">
-                        <TextArea rows={6} placeholder="Country Facts" />
+                        <TextArea rows={6} placeholder="Country Facts" value={fact} onChange={onFactChange} />
                     </div>
                 </div>
 
                 <div className="post-input-button">
-                    <Button type="primary">Save Fact</Button>
+                    <Button type="primary" onClick={createPost}>Save Fact</Button>
                 </div>
 
             </div>
