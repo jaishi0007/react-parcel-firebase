@@ -1,8 +1,9 @@
 import { PageHeader } from "@ant-design/pro-layout";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Input, Button } from "antd";
 const { TextArea } = Input
-import { writeDataToFirebase } from "../helper/apiHelper/firebase/firebase";
+import { writeDataToFirestore } from "../helper/apiHelper/firebase/firebase";
+import { Link } from "react-router-dom";
 
 
 const CreatePost = () => {
@@ -22,7 +23,7 @@ const CreatePost = () => {
         console.log('Create Post');
         const payload = { country, fact };
         console.log(payload);
-        writeDataToFirebase(payload)
+        writeDataToFirestore(payload)
             .then(docId => console.log('Facts Added About', country))
             .catch(err => console.log(err));
     }
@@ -56,6 +57,16 @@ const CreatePost = () => {
                         <TextArea rows={6} placeholder="Country Facts" value={fact} onChange={onFactChange} />
                     </div>
                 </div>
+
+                <div className="post-goto">
+                    <Link to={'/post'} style={{
+                        textDecoration: 'none',
+                        border: '1px solid #eee',
+                        padding: '10px',
+                        fontSize: '12px'
+                    }}> Show All Posts </Link>
+                </div>
+
 
                 <div className="post-input-button">
                     <Button type="primary" onClick={createPost}>Save Fact</Button>

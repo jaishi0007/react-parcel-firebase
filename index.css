@@ -27,3 +27,11 @@ body {
 .post-input-button{
     float: right;
 }
+
+.post-goto{
+    float: left;
+
+}
+.post-goto{
+    text-decoration: none;
+}
