@@ -1,8 +1,8 @@
 import { PageHeader } from "@ant-design/pro-layout";
 import React, { useState } from "react";
 import { Input, Button } from "antd";
-import onFormFieldChange from "../extra/onTextFieldChange";
 const { TextArea } = Input
+import { writeDataToFirebase } from "../helper/apiHelper/firebase/firebase";
 
 
 const CreatePost = () => {
@@ -20,6 +20,11 @@ const CreatePost = () => {
 
     const createPost = () => {
         console.log('Create Post');
+        const payload = { country, fact };
+        console.log(payload);
+        writeDataToFirebase(payload)
+            .then(docId => console.log('Facts Added About', country))
+            .catch(err => console.log(err));
     }
 
 
